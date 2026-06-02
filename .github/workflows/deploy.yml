@@ -7,8 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_BACKEND: ghcr.io/devdoubleh2/medusa-backend
-  IMAGE_STOREFRONT: ghcr.io/devdoubleh2/medusa-storefront
+  IMAGE_BACKEND: ghcr.io/221156i/medusa-backend
+  IMAGE_STOREFRONT: ghcr.io/221156i/medusa-storefront
 
 jobs:
   build-backend:
