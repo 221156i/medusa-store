@@ -17,8 +17,7 @@ COPY package.json ./
 RUN npm install --production
 
 COPY --from=base /app/.next ./.next
-COPY --from=base /app/next.config.ts ./
-COPY --from=base /app/public ./public
+COPY --from=base /app/next.config.mjs ./
 
 EXPOSE 8000
 
