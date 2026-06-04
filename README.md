@@ -16,8 +16,13 @@ docker-compose up -d
 
 ## CI/CD
 
-CircleCI builds and pushes Docker images on `main` branch, then triggers Dokploy deployment.
+GitHub Actions builds and pushes Docker images to GHCR on `main`, then triggers Dokploy deployment.
 
-### Required CircleCI env vars:
-- `GHCR_TOKEN` (GitHub PAT with `write:packages`)
-- `DOKPLOY_WEBHOOK_URL`
+Workflow: `.github/workflows/deploy.yml`
+
+### Required GitHub secrets
+- `DOKPLOY_WEBHOOK_URL` — deploy hook URL from the Dokploy project settings
+
+Images are pushed to `ghcr.io/<owner>/<repo>/{backend,storefront}` and tagged with the branch name, short SHA, and `latest` on `main`. PRs build only (no push).
+
+Make the package visibility public in **GitHub → Packages** if Dokploy needs to pull unauthenticated, or add a `docker/login-action` step on the Dokploy host with a token.
