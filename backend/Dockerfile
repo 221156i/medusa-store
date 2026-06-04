@@ -1,9 +1,9 @@
-FROM node:20-alpine AS base
+FROM oven/bun:1-alpine AS base
 WORKDIR /app
-ENV NODE_ENV=production
-COPY package.json ./
-RUN npm install --include=dev
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 COPY . .
-RUN npm run build
+RUN bun run build
+ENV NODE_ENV=production
 EXPOSE 9000
-CMD ["sh", "-c", "npx medusa db:migrate && npm start"]
+CMD ["sh", "-c", "bunx medusa db:migrate && bun run start"]

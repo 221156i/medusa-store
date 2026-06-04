@@ -14,6 +14,13 @@ Medusa v2 ecommerce platform with storefront and admin panel.
 docker-compose up -d
 ```
 
+Working in a subproject directly:
+
+```bash
+cd backend && bun install && bun run dev
+cd storefront && bun install && bun run dev
+```
+
 ## CI/CD
 
 GitHub Actions builds and pushes Docker images to GHCR on `main`, then triggers Dokploy deployment.
